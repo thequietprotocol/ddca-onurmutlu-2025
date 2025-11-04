@@ -1,0 +1,8 @@
+Number of LUTs - 107
+Number of bonded IOBs - 101
+Which pin of the FPGA is the output ‘zero’ connected? - N/A
+Where does the longest path start from - alu_op[1]
+Where does the longest path end - Zero
+What is the delay of the longest path (ns) - 18.015
+How much of the longest path is routing (percentage) - 67.985
+How many levels of logic is in the longest path - 14
