@@ -1,5 +1,3 @@
-vivado.jou
-vivado.log
+*.jou
+*.log
 *_vivado
-*.backup.jou
-*.backup.log
