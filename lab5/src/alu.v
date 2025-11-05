@@ -33,10 +33,6 @@ module top #(parameter WIDTH=32)(
   assign arith_out = alu_op[3]? {{(WIDTH-1){1'b0}}, slt}:adder_out;
 
   // For signed comparison  
-  //wire overflow = (A[WIDTH-1] ^ B[WIDTH-1]) && (adder_out[WIDTH-1] ^ A[WIDTH-1]);
-  //wire slt = overflow? A[WIDTH-1]: adder_out[WIDTH-1];
-
-  // For no expected overflow - as implied in the lab document
-  wire slt = adder_out[31];
+  wire slt = (A[WIDTH-1] ^ B[WIDTH-1])? A[WIDTH-1]: adder_out[WIDTH-1];
 
 endmodule
