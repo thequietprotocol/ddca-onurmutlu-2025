@@ -49,7 +49,7 @@ module ALU_test();
     //   exp_result
     // of the ALU. Make sure the array has at least 100 entries.
     // Note: we will not store 'exp_zero' in this array.
-    
+    reg [99:0] testvec [0:99];
     // The test clock generation
     always				// process always triggers
     begin
@@ -63,14 +63,14 @@ module ALU_test();
         // TO DO:
         // Read the content of the file testvectors_hex.txt into the
         // array testvec. The file contains values in hexadecimal format
-        
+        $readmemh("testvectors_hex.txt", testvec);
         err_cnt = 0; // number of errors
         vec_cnt = 0; // number of vectors
     end
     
     // TO DO:
     // calculate the value of 'exp_zero' from the 'exp_result'
-    
+    assign exp_zero = ~(|exp_result);
     // Tests
     always @ (posedge clk)		// trigger with the test clock
     begin
@@ -111,5 +111,6 @@ module ALU_test();
     
     // TO DO:
     // Instantiate the Unit Under Test (UUT)
-    
+    //top alu1(.alu_op(aluop), .A(a), .B(b), .Result(result), .Zero(zero));
+    bad_ALU b1(.aluop(aluop), .a(a), .b(b), .result(result), .zero(zero));
 endmodule
