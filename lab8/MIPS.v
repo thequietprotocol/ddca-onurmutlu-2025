@@ -26,27 +26,29 @@ module MIPS(
     
     wire [31:0] dm_write_data;
     wire [31:0] dm_read_data;
-    wire [31:0] res_to_reg;
+    wire [31:0] data_to_reg;
     wire memWrite;
     
+    
     // Controls
-    wire pc_src;
-    wire jump;
-    wire branch;
-    wire regDst;
-    wire regWrite;
-    wire aluSrc;
-    wire [5:0] aluCtrl;
-    wire mem_to_reg;
+    wire pc_src; //
+    wire jump; //
+    wire branch; //
+    wire regDst; //
+    wire regWrite; //
+    wire aluSrc;  //
+    wire [5:0] aluCtrl; //
+    wire mem_to_reg;  //
     
     // IO
-    wire isIO;
-    wire dataMemWrite;
+    wire isIO;  //
+    wire dataMemWrite;  //
+    wire [31:0] readMemIO;
     
     assign PC_plus4  = PC + 4;    
     assign PC_branch = PC_plus4 + (signImm << 2);
     assign PC_calc   = pc_src? PC_branch : PC_plus4;
-    assign PC_jump   = {PC_plus4[31:28], (instr[25:0] << 2)};
+    assign PC_jump   = {PC_plus4[31:28], instr[25:0], 2'b00};
     assign PC_next   = jump? PC_jump : PC_calc;    
     
     always @(posedge clk, posedge reset) begin

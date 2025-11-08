@@ -14,7 +14,7 @@ module register_file #(
 );
     // Tell Vivado to use distributed (LUT) RAM
     (* ram_style = "distributed" *)
-    reg [WIDTH-1:0] mem [0:DEPTH-1];
+    reg [WIDTH-1:0] mem [DEPTH-1:0];
 
     // Write port
     always @(posedge clk) begin

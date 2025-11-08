@@ -14,6 +14,7 @@ module ALU #(parameter WIDTH=32)(
 
   reg [WIDTH-1:0] bit_out;
   wire [WIDTH-1:0] arith_out, adder_out;
+  wire slt;
 
   always @(*) begin
     case(alu_op[1:0])
@@ -30,7 +31,7 @@ module ALU #(parameter WIDTH=32)(
   assign arith_out = alu_op[3]? {{(WIDTH-1){1'b0}}, slt}:adder_out;
 
   // For signed comparison  
-  wire slt = (A[WIDTH-1] ^ B[WIDTH-1])? A[WIDTH-1]: adder_out[WIDTH-1];
+  assign slt = (A[WIDTH-1] ^ B[WIDTH-1])? A[WIDTH-1]: adder_out[WIDTH-1];
 
   assign Result = alu_op[2]? bit_out: arith_out;
   assign Zero = ~(|Result);
