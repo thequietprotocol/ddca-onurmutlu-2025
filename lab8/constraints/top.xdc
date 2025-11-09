@@ -36,3 +36,6 @@ set_property IOSTANDARD LVCMOS33 [get_ports AN]
 
 # TODO PART II for Lab 8
 # add input port to read the switch value for speed control of the snake
+set_property -dict {PACKAGE_PIN V17 IOSTANDARD LVCMOS33} [get_ports sp_switch[0]]
+set_property -dict {PACKAGE_PIN V16 IOSTANDARD LVCMOS33} [get_ports sp_switch[1]]
+set_property -dict {PACKAGE_PIN R2 IOSTANDARD LVCMOS33} [get_ports dr_switch]
